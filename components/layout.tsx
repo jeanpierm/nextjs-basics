@@ -7,7 +7,12 @@ import ProfilePicture from './profile-picture';
 const name = 'Jeanpier Mendoza';
 export const siteTitle = 'Next.js Sample Website';
 
-export default function Layout({ children, home }) {
+interface LayoutProps {
+  children: React.ReactNode;
+  home?: boolean;
+}
+
+export default function Layout({ children, home }: LayoutProps) {
   return (
     <div className={styles.container}>
       <Head>
@@ -28,14 +33,14 @@ export default function Layout({ children, home }) {
       <header className={styles.header}>
         {home ? (
           <>
-            <ProfilePicture alt={name} />
+            <ProfilePicture alt={name} height={144} width={144} />
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
         ) : (
           <>
             <Link href="/">
               <a>
-                <ProfilePicture alt={name} />
+                <ProfilePicture alt={name} height={108} width={108} />
               </a>
             </Link>
             <h2 className={utilStyles.headingLg}>
